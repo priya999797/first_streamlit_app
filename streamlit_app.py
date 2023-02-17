@@ -15,7 +15,7 @@ import pandas
 import pandas as pd
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 new_fruit = streamlit.text_input('What fruit would you like to add?')
-my_fruit_list = my_fruit_list.append(newfruite)
+my_fruit_list = my_fruit_list.append(new_fruit)
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # Let's put a pick list here so they can pick the fruit they want to include 
