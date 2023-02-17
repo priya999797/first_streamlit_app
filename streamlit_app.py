@@ -13,9 +13,6 @@ streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
-new_fruit_name = streamlit.text_input('What fruit would you like to add?')
-# my_fruit_list = my_fruit_list.append(new_fruit)
-
 my_fruit_list = my_fruit_list.set_index('Fruit')
 # Let's put a pick list here so they can pick the fruit they want to include 
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
@@ -32,11 +29,10 @@ import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
 
-# write your own comment -what does the next line do? 
+# gets fruits watermelons details
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
+# Displays a table
 streamlit.dataframe(fruityvice_normalized)
-
 
 import snowflake.connector
 # Error source
@@ -50,4 +46,6 @@ streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
 
-
+# Allow the end user to add a fruit to the list
+new_fruit_name = streamlit.text_input('What fruit would you like to add?')
+streamlit.write('Thanks for adding ', fruit_choice)
