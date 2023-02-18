@@ -67,13 +67,13 @@ try:
   if not fruit_choice:
     streamlit.error("Please select a fruit to get Information.")
   else:
-    back_from_function = abcget_fruityvice_data(fruit_choice)
+    back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
 
 #import snowflake.connector
 # Error source
-print(streamlit.secrets)
-print(streamlit.secrets["snowflake"])
+#print(streamlit.secrets)
+#print(streamlit.secrets["snowflake"])
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
